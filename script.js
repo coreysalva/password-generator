@@ -6,6 +6,12 @@ var smallCase = 'abcdefghijklmnopqrstuvwxyz';
 var bigCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var nums = '0123456789';
 var specChar = ' !\"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
+var userCharChoices = {
+  hasSmall: false,
+  hasBig: false,
+  hasNum: false,
+  hasSpecial: false
+}
 
 
 
@@ -44,8 +50,32 @@ function getPwLength() {
 
 }
 
+//Select character sets to use
+function getCharSets() {
+  newUserChoices = {
+    hasSmall: false,
+    hasBig: false,
+    hasNum: false,
+    hasSpecial: false
+  }
+  if (confirm("Would you like your password to include lowercase characters? Cick confirm for yes, and cancel for no. ex: abcdef")) {
+    newUserChoices.hasSmall = true;
+  }
+  if (confirm("Additionally, would you like your password to include uppercase characters? Cick confirm for yes, and cancel for no. ex: ABCDEF")) {
+    newUserChoices.hasBig = true;
+  }
+  if (confirm("Additionally, would you like your password to include numbers? Cick confirm for yes, and cancel for no. ex: 123456")) {
+    newUserChoices.hasNum = true;
+  }
+  if (confirm("Lastly, would you like your password to include special characters? Cick confirm for yes, and cancel for no. ex: *+,-./:")) {
+    newUserChoices.hasSpecial = true;
+  }
+  return newUserChoices;
+}
+
 function generatePassword() {
   var pwLength = getPwLength();
+  userCharChoices = getCharSets();
 }
 
 // Write password to the #password input
