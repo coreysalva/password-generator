@@ -22,24 +22,24 @@ function getPwLength() {
   var numcheck = 0;
   var numResponse = prompt("Please enter the number of characters you would like your password to be, between 8-128.");
   if ((numResponse < 8) || (numResponse > 128)) {
+    //bad input
     numcheck = 1;
-    alert('bad input');
   }
   else {
+    //good input
     numcheck = 2;
-    alert('good input');
   }
 
   //2 means accepted input, 1 means bad input
   while (numcheck < 2) {
     numResponse = prompt("Invalid input, please enter the number of characters you would like your password to be, between 8-128. ex: '24'");
     if ((numResponse < 8) || (numResponse > 128)) {
+      //bad input
       numcheck = 1;
-      alert('bad input in while loop');
     }
     else {
+      //Good input
       numcheck = 2;
-      alert('good input in while loop');
     }
   }
 
