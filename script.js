@@ -51,18 +51,28 @@ function getPwLength() {
 
 //Select character sets to use
 function getCharSets() {
-  var setArray = [smallCase, bigCase, nums, specChar];
-  if (!confirm("Would you like your password to include lowercase characters? Cick confirm for yes, and cancel for no. ex: abcdef")) {
-    setArray.splice(setArray.indexOf(smallCase), 1);
-  }
-  if (!confirm("Additionally, would you like your password to include uppercase characters? Cick confirm for yes, and cancel for no. ex: ABCDEF")) {
-    setArray.splice(setArray.indexOf(bigCase), 1);
-  }
-  if (!confirm("Additionally, would you like your password to include numbers? Cick confirm for yes, and cancel for no. ex: 123456")) {
-    setArray.splice(setArray.indexOf(nums), 1);
-  }
-  if (!confirm("Lastly, would you like your password to include special characters? Cick confirm for yes, and cancel for no. ex: *+,-./:")) {
-    setArray.splice(setArray.indexOf(specChar), 1);
+  var checkInput = false;
+  var setArray = [];
+  while (!checkInput) {
+    setArray = [smallCase, bigCase, nums, specChar];
+    if (!confirm("Would you like your password to include lowercase characters? Cick confirm for yes, and cancel for no. ex: abcdef")) {
+      setArray.splice(setArray.indexOf(smallCase), 1);
+    }
+    if (!confirm("Additionally, would you like your password to include uppercase characters? Cick confirm for yes, and cancel for no. ex: ABCDEF")) {
+      setArray.splice(setArray.indexOf(bigCase), 1);
+    }
+    if (!confirm("Additionally, would you like your password to include numbers? Cick confirm for yes, and cancel for no. ex: 123456")) {
+      setArray.splice(setArray.indexOf(nums), 1);
+    }
+    if (!confirm("Lastly, would you like your password to include special characters? Cick confirm for yes, and cancel for no. ex: *+,-./:")) {
+      setArray.splice(setArray.indexOf(specChar), 1);
+    }
+    if (setArray.length == 0) {
+      alert("Please be sure to select one of the four character select options. Please try again.");
+    }
+    else {
+      checkInput = true;
+    }
   }
   return setArray;
 }
